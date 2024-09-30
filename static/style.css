@@ -1,0 +1,185 @@
+styles.css
+
+/* Utility Classes for Customizations */
+.bg-custom {
+    background-color: #F7FAFC;
+    /* Light gray background */
+}
+
+/* Header Styles */
+.header {
+    background-color: #FFFFFF;
+    /* White background for header */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow */
+    border-bottom-left-radius: 20px;
+    /* Rounded corners */
+    border-bottom-right-radius: 20px;
+    /* Rounded corners */
+    position: sticky;
+    /* Stick header to top */
+    top: 0;
+    /* Ensure it stays at the top */
+    z-index: 1000;
+    /* Keep it above other content */
+}
+
+/* Logo hover effect */
+.header-logo {
+    transition: transform 0.3s;
+}
+
+.header-logo:hover {
+    transform: scale(1.05);
+    /* Scale logo on hover */
+}
+
+/* Main Content Styles */
+.main-content {
+    transition: box-shadow 0.3s;
+    border-radius: 20px;
+    /* More pronounced rounded corners */
+    background-color: #FFFFFF;
+    /* White background for content */
+    padding: 20px;
+    /* Padding inside the main content */
+    margin-top: 20px;
+    /* Space between header and main content */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    /* Default shadow */
+}
+
+/* Hover effect for main content */
+.main-content:hover {
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
+    /* Shadow effect on hover */
+}
+
+/* Form Input Styles */
+input[type="text"],
+input[type="date"],
+input[type="file"],
+select,
+textarea {
+    border: 1px solid #E2E8F0;
+    /* Light border color */
+    border-radius: 5px;
+    /* Rounded corners */
+    padding: 10px;
+    /* Padding inside inputs */
+    width: 100%;
+    /* Full width */
+    margin-top: 5px;
+    /* Space above inputs */
+    transition: border-color 0.3s;
+    /* Smooth transition */
+}
+
+/* Input focus effect */
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #38B2A1;
+    /* Change border color on focus */
+    outline: none;
+    /* Remove default outline */
+}
+
+/* Button Styles */
+button,
+a.inline-block {
+    border-radius: 5px;
+    /* Rounded corners */
+    transition: background-color 0.3s, transform 0.2s;
+    /* Smooth transition */
+    padding: 10px 15px;
+    /* Consistent padding */
+    text-align: center;
+    /* Center text */
+}
+
+/* Add Release Button */
+a.add-release {
+    background-color: #38B2A1;
+    /* Teal */
+    color: white;
+    /* Text color */
+}
+
+a.add-release:hover {
+    background-color: #2C7A7B;
+    /* Darker teal on hover */
+}
+
+/* Upgrade Plan Button */
+a.upgrade-plan {
+    background-color: #63B3ED;
+    /* Soft blue */
+    color: white;
+    /* Text color */
+}
+
+a.upgrade-plan:hover {
+    background-color: #4299E1;
+    /* Darker blue on hover */
+}
+
+/* Footer Styles */
+.footer {
+    background-color: #FFFFFF;
+    /* White background for footer */
+    padding: 20px 0;
+    /* Padding for footer */
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow at the top */
+    border-top-left-radius: 20px;
+    /* Rounded corners */
+    border-top-right-radius: 20px;
+    /* Rounded corners */
+}
+
+.footer-text {
+    color: #4A5568;
+    /* Darker gray for footer text */
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    nav a {
+        padding: 8px;
+        /* Adjust padding for mobile */
+    }
+
+    .main-content {
+        padding: 15px;
+        /* Adjust padding for mobile */
+    }
+
+    .header {
+        flex-direction: column;
+        /* Stack elements vertically on smaller screens */
+        align-items: flex-start;
+        /* Align items to start */
+    }
+
+    .header-logo {
+        margin-bottom: 10px;
+        /* Space below logo */
+    }
+}
+
+/* Additional Responsive Styles */
+@media (max-width: 480px) {
+    .main-content {
+        margin-top: 10px;
+        /* Less margin on smaller devices */
+    }
+
+    button,
+    a.inline-block {
+        padding: 8px;
+        /* Adjust button padding for mobile */
+        font-size: 14px;
+        /* Slightly smaller font size */
+    }
+}

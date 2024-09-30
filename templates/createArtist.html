@@ -1,0 +1,121 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h2>Create Artist Profile</h2>
+<form method="post" enctype="multipart/form-data" class="profile-form">
+    {% csrf_token %}
+
+    <div class="form-group">
+        <label for="stage_name">Stage Name:</label>
+        <input type="text" id="stage_name" name="stage_name" required>
+    </div>
+
+    <div class="form-group">
+        <label for="header_image">Header Image:</label>
+        <input type="file" id="header_image" name="header_image" accept="image/*" required>
+    </div>
+
+    <div class="form-group">
+        <label for="profile_picture">Profile Picture:</label>
+        <input type="file" id="profile_picture" name="profile_picture" accept="image/*" required>
+    </div>
+
+    <div class="form-group">
+        <label for="bio">Bio:</label>
+        <textarea id="bio" name="bio" required></textarea>
+    </div>
+
+    <button type="submit" class="submit-button">Create Profile</button>
+</form>
+
+<a href="{% url 'index' %}" class="cancel-link">Cancel</a>
+
+{% if messages %}
+<ul class="message-list">
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<style>
+    .profile-form {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background-color: rgb(53, 53, 53);
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+        /* Increased space between form groups */
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #ffffff;
+        /* Ensures label visibility */
+    }
+
+    input[type="text"],
+    input[type="file"],
+    textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #3e3d3d;
+        border-radius: 4px;
+        box-sizing: border-box;
+        background-color: #ffffff;
+        /* Light background for inputs */
+        color: #333;
+        /* Dark text for better readability */
+    }
+
+    button.submit-button {
+        background-color: #4CAF50;
+        /* Green background */
+        color: white;
+        /* White text */
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        /* Increased font size for better accessibility */
+        transition: background-color 0.3s;
+        /* Smooth transition effect */
+    }
+
+    button.submit-button:hover {
+        background-color: #45a049;
+        /* Darker green on hover */
+    }
+
+    .cancel-link {
+        display: inline-block;
+        margin-top: 10px;
+        text-decoration: none;
+        color: #007BFF;
+        /* Link color */
+        transition: text-decoration 0.3s;
+        /* Smooth transition effect */
+    }
+
+    .cancel-link:hover {
+        text-decoration: underline;
+    }
+
+    .message-list {
+        margin-top: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        background-color: #f1f1f1;
+        border-radius: 4px;
+    }
+</style>
+
+{% endblock %}

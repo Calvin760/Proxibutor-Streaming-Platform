@@ -1,0 +1,56 @@
+{% extends 'layout.html' %}
+
+{% block title %}About Us{% endblock %}
+
+{% block content %}
+<main class="container mx-auto mt-8 p-5 rounded-lg shadow-lg bg-gray-900 text-white">
+    <h2 class="text-2xl font-semibold mb-4">About Us</h2>
+
+    <section class="mb-6">
+        <h3 class="text-xl font-semibold mb-2">Welcome to Proxibutor</h3>
+        <p class="mb-4">
+            At Proxibutor, we are proud to be the distributor for a vibrant and diverse roster of artists under
+            our small record label. Our mission is to empower musicians by providing them with a platform to share their
+            music, connect with fans, and collaborate with each other.
+        </p>
+        <p class="mb-4">
+            We believe in the power of community in the music industry. Our artists can easily stream each other’s
+            music, fostering collaboration and inspiration. Whether you're an emerging artist or an established
+            musician, our platform is designed to showcase your talent and help you reach a wider audience.
+        </p>
+    </section>
+
+    <section class="mb-6">
+        <h3 class="text-xl font-semibold mb-2">Our Artists</h3>
+        <p class="mb-4">
+            Each artist in our label brings their unique sound and perspective to the table. From soulful ballads to
+            energetic beats, our collection spans a wide range of genres. We celebrate creativity and originality, and
+            we are dedicated to supporting our artists in their musical journeys.
+        </p>
+        <p class="mb-4">
+            By streaming their music, you not only discover new sounds but also become a part of a community that values
+            artistic expression and collaboration. Explore our collection, and find your new favorite artist today!
+        </p>
+    </section>
+
+    <section>
+        <h3 class="text-xl font-semibold mb-2">Join Us</h3>
+        <p class="mb-4">
+            Whether you are a music lover or an aspiring artist, we invite you to join us on this journey. Sign up to
+            stay updated on new releases, exclusive content, and upcoming events. Together, let’s celebrate the art of
+            music and support each other in our creative endeavors.
+        </p>
+        <p>
+            Thank you for being a part of Proxibutor! We can't wait for you to explore our music and discover
+            the incredible talent within our label.
+        </p>
+    </section>
+
+    <div class="mt-6 text-center">
+        <a href="{% url 'register' %}"
+            class="inline-block bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600 transition">
+            Join Us Today
+        </a>
+    </div>
+</main>
+{% endblock %}

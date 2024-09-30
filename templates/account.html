@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block title %}Account Settings - Proxibutor{% endblock %}
+
+{% block content %}
+<div class="container mx-auto mt-8 p-5 rounded-lg shadow-lg bg-grey">
+    <h2 class="text-2xl font-bold mb-4">Account Settings</h2>
+
+    <form method="POST" action="update_account" class="mb-6" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <!-- Profile Picture Upload -->
+        <div class="mb-4">
+            <label for="profile_picture" class="block text-white-700">Profile Picture:</label>
+            <input type="file" name="profile_picture" id="profile_picture" class="mt-1 block w-full border border-gray-600 rounded-md p-2 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400"
+                accept="image/*">
+        </div>
+
+        <!-- Stage Name -->
+        <div class="mb-4">
+            <label for="stage_name" class="block text-white-700">Stage Name:</label>
+            <input type="text" name="stage_name" id="stage_name" class="mt-1 block w-full border border-gray-600 rounded-md p-2 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400" required
+                placeholder="Your stage name">
+        </div>
+
+        <!-- Bio -->
+        <div class="mb-4">
+            <label for="bio" class="block text-white-700">Bio:</label>
+            <textarea name="bio" id="bio" class="mt-1 block w-full border border-gray-600 rounded-md p-2 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400" rows="4"
+                placeholder="Tell us about yourself..."></textarea>
+        </div>
+
+        <!-- Username Update -->
+        <div class="mb-4">
+            <label for="username" class="block text-white-700">Username:</label>
+            <input type="text" name="username" id="username" class="mt-1 block w-full border border-gray-600 rounded-md p-2 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400" required
+                placeholder="New username">
+        </div>
+
+        <button type="submit" class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition">Update
+            Account</button>
+    </form>
+
+    <form method="POST" action="change_password">
+        {% csrf_token %}
+        <div class="mb-4">
+            <label for="current_password" class="block text-white-700">Current Password:</label>
+            <input type="password" name="current_password" id="current_password"
+                class="mt-1 block w-full border border-gray-600 rounded-md p-2 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400" required placeholder="Current password">
+        </div>
+        <div class="mb-4">
+            <label for="new_password" class="block text-white-700">New Password:</label>
+            <input type="password" name="new_password" id="new_password" class="mt-1 block w-full border border-gray-600 rounded-md p-2 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400"
+                required placeholder="New password">
+        </div>
+        <button type="submit" class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition">Change
+            Password</button>
+    </form>
+</div>
+{% endblock %}

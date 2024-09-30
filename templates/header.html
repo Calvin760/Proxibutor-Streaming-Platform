@@ -1,0 +1,65 @@
+<header
+    class="header flex justify-between items-center p-5 bg-gradient-to-r from-purple-600 to-blue-600 shadow-lg rounded-b-lg">
+    <div class="flex items-center">
+        <img src="{% static 'proxibutor.png' %}" alt="Proxibutor Logo" class="h-12">
+        <!-- <h1 class="ml-2 text-2xl font-bold">Proxibutor</h1> -->
+    </div>
+    <nav>
+        <ul class="flex space-x-6 items-center">
+            <li>
+                <a href="/" class="flex items-center text-white font-semibold hover:text-yellow-300 transition">
+                    <svg class="h-8 w-8 text-white mr-2 transition-transform transform hover:scale-110"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <rect x="3" y="3" width="7" height="7" />
+                        <rect x="14" y="3" width="7" height="7" />
+                        <rect x="14" y="14" width="7" height="7" />
+                        <rect x="3" y="14" width="7" height="7" />
+                    </svg>
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="/about" class="flex items-center text-white font-semibold hover:text-yellow-300 transition">
+                    <svg class="h-7 w-7 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                    </svg>
+                    About
+                </a>
+            </li>
+            <li>
+                <a href="/music_collection"
+                    class="flex items-center text-white font-semibold hover:text-yellow-300 transition">
+                    <svg class="h-8 w-8 text-white mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 18V5l12-2v13" />
+                        <circle cx="6" cy="18" r="3" />
+                        <circle cx="18" cy="16" r="3" />
+                    </svg>
+                    Music
+                </a>
+            </li>
+            <li class="relative">
+                <button onclick="toggleDropdown()" aria-haspopup="true" aria-expanded="false"
+                    class="flex items-center text-white font-semibold hover:text-yellow-300 transition">
+                    <svg class="h-8 w-8 text-white mr-2 transition-transform transform hover:scale-110" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    Profile
+                </button>
+                <div id="account-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg">
+                    <ul class="py-1">
+                        <li><a href="/account" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Account</a>
+                        </li>
+                        <li><a href="/logout" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Sign Out</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </nav>
+</header>

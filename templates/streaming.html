@@ -1,0 +1,108 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}Proxibutor - Music Streaming Service{% endblock %}
+
+{% block content %}
+<div class="sidebar" style="width: 240px; height: 100vh; position: fixed; background: #181818;">
+    <div class="logo-container" style="padding: 20px;">
+        <img src="{% static 'proxibutor.png' %}" alt="Proxibutor Logo" style="width: 100%; height: auto;">
+    </div>
+
+    <div class="sidebar-section" style="padding: 20px;">
+        <span class="sidebar-link-icon">👤</span>
+        <b>Welcome, {{ user.username }}</b>
+        <br><br>
+        <a href="/logout" style="color: #ffffff;">
+            <span class="sidebar-link-icon">↪️</span>
+            <b>Logout</b>
+        </a>
+    </div>
+
+    <div class="sidebar-section">
+        <a href="/" class="sidebar-link active" style="color: #ffffff;">
+            <span class="sidebar-link-icon">🏠</span>
+            Home
+        </a>
+        <a href="/search" class="sidebar-link" style="color: #ffffff;">
+            <span class="sidebar-link-icon">🔍</span>
+            Search
+        </a>
+    </div>
+</div>
+
+<!-- Main content area -->
+<div class="music-player"
+    style="margin-left:240px; padding:20px; display: flex; justify-content: center; align-items: center; height: calc(100vh - 90px);">
+    <div class="player-container" style="text-align: center;">
+        <img class="album-cover" src="{{ track_image }}" alt="Album Cover"
+            style="width: 200px; height: 200px; border-radius: 10px;">
+        <div class="song-info">
+            <h2 class="song-title" style="font-size: 24px;">{{ track_name }}</h2>
+            <h3 class="artist-name" style="font-size: 18px; color: #aaa;">{{ artist_name }}</h3>
+        </div>
+        <div class="player-controls" style="margin: 20px 0;">
+            <button id="prev" class="control-btn" style="font-size: 24px;">&#9668;</button>
+            <button id="play-pause" class="control-btn play-btn" style="font-size: 24px;">&#9658;</button>
+            <button id="next" class="control-btn" style="font-size: 24px;">&#9658;</button>
+        </div>
+        <div class="progress-bar" id="progress-bar"
+            style="width: 100%; height: 5px; background: #333; cursor: pointer;">
+            <div class="progress" id="progress" style="height: 100%; background: #1db954; width: 0;"></div>
+        </div>
+        <div class="time-stamps" style="margin-top: 10px;">
+            <span id="current-time">0:00</span>
+            <span id="total-duration">{{ duration_text }}</span>
+        </div>
+    </div>
+
+    <audio id="audio-player" src="{{ audio_url }}"></audio>
+</div>
+
+<script>
+    const audioPlayer = document.getElementById('audio-player');
+    const playPauseBtn = document.getElementById('play-pause');
+    const progressBar = document.getElementById('progress-bar');
+    const progress = document.getElementById('progress');
+    const currentTimeElement = document.getElementById('current-time');
+    const totalDurationElement = document.getElementById('total-duration');
+
+    playPauseBtn.addEventListener('click', () => {
+        if (audioPlayer.paused) {
+            audioPlayer.play();
+            playPauseBtn.innerHTML = '&#10074;&#10074;'; // Change to pause icon
+        } else {
+            audioPlayer.pause();
+            playPauseBtn.innerHTML = '&#9658;'; // Change to play icon
+        }
+    });
+
+    audioPlayer.addEventListener('timeupdate', () => {
+        const progressPercentage = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+        progress.style.width = `${progressPercentage}%`;
+
+        // Update current time text
+        const currentMinutes = Math.floor(audioPlayer.currentTime / 60);
+        const currentSeconds = Math.floor(audioPlayer.currentTime - currentMinutes * 60);
+        currentTimeElement.textContent = `${currentMinutes}:${currentSeconds.toString().padStart(2, '0')}`;
+    });
+
+    progressBar.addEventListener('click', (e) => {
+        const progressBarWidth = progressBar.clientWidth;
+        const clickX = e.offsetX;
+        const duration = audioPlayer.duration;
+
+        audioPlayer.currentTime = (clickX / progressBarWidth) * duration;
+    });
+
+    // Move forward 10 seconds
+    document.getElementById('next').addEventListener('click', () => {
+        audioPlayer.currentTime = Math.min(audioPlayer.duration, audioPlayer.currentTime + 10);
+    });
+
+    // Move back 10 seconds
+    document.getElementById('prev').addEventListener('click', () => {
+        audioPlayer.currentTime = Math.max(0, audioPlayer.currentTime - 10);
+    });
+</script>
+{% endblock %}

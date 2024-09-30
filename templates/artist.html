@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block title %}{{ artist.name }} - Artist Profile{% endblock %}
+
+{% block content %}
+<main class="container mx-auto mt-8 p-5 rounded-lg shadow-lg bg-white">
+    <h2 class="text-2xl font-semibold mb-4">{{ artist.name }}</h2>
+
+    <div class="flex mb-6">
+        <img src="{{ artist.profile_picture.url }}" alt="{{ artist.name }} profile picture"
+            class="w-32 h-32 rounded-full mr-4">
+        <div>
+            <h3 class="text-xl font-bold">Bio</h3>
+            <p class="text-gray-700">{{ artist.bio }}</p>
+        </div>
+    </div>
+
+    <section class="music-list">
+        <h3 class="text-xl font-semibold mb-2">Music by {{ artist.name }}</h3>
+        <ul id="music-items" class="space-y-4">
+            {% for music in artist.music_list %}
+            <li class="flex items-center justify-between p-4 border rounded-lg hover:bg-gray-100">
+                <div class="flex items-center">
+                    <img src="{{ music.cover_art.url }}" alt="{{ music.title }} cover" class="w-16 h-16 mr-4 rounded">
+                    <div>
+                        <h4 class="font-bold">{{ music.title }}</h4>
+                        <audio controls>
+                            <source src="{{ music.song.url }}" type="audio/mpeg">
+                            Your browser does not support the audio tag.
+                        </audio>
+                    </div>
+                </div>
+                <a href="music_detail/{{ music.id }}" class="text-blue-500 hover:underline">View Details</a>
+            </li>
+            {% empty %}
+            <li class="text-gray-500">No music found for this artist.</li>
+            {% endfor %}
+        </ul>
+    </section>
+</main>
+{% endblock %}

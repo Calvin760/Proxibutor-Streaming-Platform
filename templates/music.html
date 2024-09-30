@@ -1,0 +1,113 @@
+{% extends 'layout.html' %}
+
+{% block title %}Music Collection{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        background-color: #f0f4f8; /* Soft background */
+        font-family: Arial, sans-serif;
+        color: #333;
+        margin: 0;
+        padding: 20px;
+    }
+    .container {
+        background-color: #ffffff; /* White container */
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+    }
+    h2, h3 {
+        color: #2c3e50; /* Darker text for headings */
+    }
+    .music-item h4 {
+        color: #000; /* Black color for the music title */
+    }
+    input[type="text"] {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        width: 100%;
+        transition: border-color 0.3s;
+    }
+    input[type="text"]:focus {
+        border-color: #007BFF; /* Focus state */
+        outline: none;
+    }
+    a {
+        color: #007BFF; /* Blue links */
+        text-decoration: none;
+    }
+    a:hover {
+        text-decoration: underline; /* Underline on hover */
+    }
+    .music-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        transition: background-color 0.3s;
+    }
+    .music-item:hover {
+        background-color: #e0e0e0; /* Darker on hover */
+    }
+    img {
+        border-radius: 5px;
+    }
+    audio {
+        margin-top: 10px;
+        width: 100%;
+    }
+</style>
+
+<main class="container mx-auto mt-8">
+    <h2 class="text-2xl font-semibold mb-4">Music Collection</h2>
+
+    <div class="mb-6">
+        <input type="text" id="search" placeholder="Search for music or artist..." />
+    </div>
+
+    <section class="music-list">
+        <h3 class="text-xl font-semibold mb-2">Available Music</h3>
+        <ul id="music-items" class="space-y-4">
+            {% for music in music_list %}
+            <li class="music-item">
+                <div class="flex items-center">
+                    <img src="{{ music.cover_art.url }}" alt="{{ music.title }} cover" class="w-16 h-16 mr-4 rounded">
+                    <div>
+                        <h4 class="font-bold">{{ music.title }}</h4>
+                        <p class="text-gray-600">
+                            Artist: <a href="/artist_detail/{{ music.artist_id }}" class="text-blue-500 hover:underline">{{ music.stage_name }}</a>
+                        </p>
+                        <audio controls aria-label="Audio player for {{ music.title }}">
+                            <source src="{{ music.song.url }}" type="audio/mpeg">
+                            Your browser does not support the audio tag.
+                        </audio>
+                    </div>
+                </div>
+                <a href="/music_detail/{{ music.id }}" class="text-blue-500 hover:underline">View Details</a>
+            </li>
+            {% empty %}
+            <li class="text-gray-500">No music found.</li>
+            {% endfor %}
+        </ul>
+    </section>
+</main>
+
+<script>
+    const searchInput = document.getElementById('search');
+    const musicItems = document.getElementById('music-items').children;
+
+    searchInput.addEventListener('input', function () {
+        const query = this.value.toLowerCase();
+        Array.from(musicItems).forEach(item => {
+            const title = item.querySelector('h4').textContent.toLowerCase();
+            const artist = item.querySelector('p').textContent.toLowerCase();
+            item.style.display = title.includes(query) || artist.includes(query) ? 'flex' : 'none';
+        });
+    });
+</script>
+{% endblock %}

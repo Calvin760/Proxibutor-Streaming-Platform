@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Description of my application.">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>{% block title %}Proxibutor{% endblock %}</title>
+    <script>
+        // Function to hide messages after 15 seconds
+        function hideMessages() {
+            setTimeout(function () {
+                const messages = document.querySelectorAll('.message');
+                messages.forEach(message => {
+                    message.style.display = 'none';
+                });
+            }, 15000); // 15 seconds
+        }
+
+        document.addEventListener('DOMContentLoaded', hideMessages);
+    </script>
+</head>
+
+<body class="bg-gray-900 text-white">
+    <header
+        class="header flex justify-between items-center p-5 bg-gradient-to-r from-purple-600 to-blue-600 shadow-lg rounded-b-lg">
+        <div class="flex items-center">
+            <a href="/about" aria-label="Home">
+                <img src="{% static 'proxibutor.png' %}" alt="Proxibutor Logo" class="h-12">
+            </a>
+            <h1 class="ml-2 text-2xl font-bold"></h1>
+        </div>
+        <nav class="flex space-x-4">
+            <!-- Navigation links can be added here -->
+        </nav>
+    </header>
+
+    {% for message in messages %}
+    <div class="container mx-auto mt-4 message">
+        {% if message.tags == 'error' %}
+        <div class="bg-red-600 text-white p-3 rounded-md mb-4">{{ message }}</div>
+        {% elif message.tags == 'success' %}
+        <div class="bg-green-600 text-white p-3 rounded-md mb-4">{{ message }}</div>
+        {% else %}
+        <div class="bg-orange-400 text-white p-3 rounded-md mb-4">{{ message }}</div>
+        {% endif %}
+    </div>
+    {% endfor %}
+
+    <main class="container mx-auto mt-8 p-5 rounded-lg shadow-lg bg-gray-800">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="footer text-center mt-8 p-4 bg-gray-700 text-white shadow-md rounded-lg">
+        <p class="footer-text">&copy; 2024 Proxibutor. All rights reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</body>
+
+</html>

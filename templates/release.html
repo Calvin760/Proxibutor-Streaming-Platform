@@ -1,0 +1,93 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h2 class="text-xl font-semibold mb-4">Add New Release</h2>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <div>
+        <label for="title" class="block text-sm font-medium text-white-800">Song Title</label>
+        <input type="text" id="title" name="title" required placeholder="Enter song title"
+            class="mt-1 block w-full border border-gray-600 rounded-md p-2 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400">
+    </div>
+
+    <div>
+        <label for="stage_name" class="block text-sm font-medium text-white-800">Your Stage Name</label>
+        <input type="text" id="stage_name" name="stage_name" required placeholder="Enter your stage name"
+            class="mt-1 block w-full border border-gray-600 rounded-md p-2 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400">
+    </div>
+
+    <div>
+        <label for="featured_artists" class="block text-sm font-medium text-white-800">Featured Artists</label>
+        <input type="text" id="featured_artists" name="featured_artists"
+            class="mt-1 block w-full border border-gray-600 rounded-md p-2 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400"
+            placeholder="Comma-separated names">
+    </div>
+
+    <div>
+        <label for="release_date" class="block text-sm font-medium text-white-800">Release Date</label>
+        <input type="date" id="release_date" name="release_date" required
+            class="mt-1 block w-full border border-gray-600 rounded-md p-2 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400">
+    </div>
+
+    <div>
+        <label for="cover_art" class="block text-sm font-medium text-white-800">Cover Art</label>
+        <input type="file" id="cover_art" name="cover_art" accept="image/*" required
+            class="mt-1 block w-full border border-gray-600 rounded-md p-2 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400">
+    </div>
+
+    <div>
+        <label for="song" class="block text-sm font-medium text-white-800">Song File</label>
+        <input type="file" id="song" name="song" accept="audio/*" required
+            class="mt-1 block w-full border border-gray-600 rounded-md p-2 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400">
+    </div>
+
+    <div>
+        <label for="credits" class="block text-sm font-medium white-gray-800">Credits</label>
+        <textarea id="credits" name="credits" rows="3"
+            class="mt-1 block w-full border border-gray-600 rounded-md p-2 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400"
+            placeholder="Production team, songwriters, etc."></textarea>
+    </div>
+
+    <div>
+        <label for="genre" class="block text-sm font-medium text-white-800">Genre</label>
+        <select id="genre" name="genre" required
+            class="mt-1 block w-full border border-gray-600 rounded-md p-2 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400">
+            <option value="">Select a genre</option>
+            <option value="Amapiano">Amapiano</option>
+            <option value="Afro Beats">Afro Beats</option>
+            <option value="Afro Pop">Afro Pop</option>
+            <option value="Alternative">Alternative</option>
+            <option value="Blues">Blues</option>
+            <option value="Classical">Classical</option>
+            <option value="Country">Country</option>
+            <option value="Electronic">Electronic</option>
+            <option value="Hip Hop">Hip Hop</option>
+            <option value="House">House</option>
+            <option value="Indie">Indie</option>
+            <option value="Jazz">Jazz</option>
+            <option value="Metal">Metal</option>
+            <option value="Pop">Pop</option>
+            <option value="Punk">Punk</option>
+            <option value="R&B">R&B</option>
+            <option value="Reggae">Reggae</option>
+            <option value="Rock">Rock</option>
+            <option value="Soul">Soul</option>
+            <option value="Latin">Latin</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="explicit_lyrics" class="flex items-center">
+            <input type="checkbox" id="explicit_lyrics" name="explicit_lyrics" value="true" class="mr-2">
+            <span class="text-sm text-white-700">Explicit Lyrics</span>
+        </label>
+    </div>
+
+    <button type="submit"
+        class="mt-4 inline-flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+        Submit
+    </button>
+</form>
+{% endblock %}
