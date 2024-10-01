@@ -9,9 +9,9 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import authenticate
 
 
-def handle_error_message(request, message):
-    messages.error(request, message)
-    return redirect(request.META.get('HTTP_REFERER', 'index'))
+# def handle_error_message(request, message):
+#     messages.error(request, message)
+#     return redirect(request.META.get('HTTP_REFERER', 'index'))
 
 @login_required(login_url='login')
 def index(request):
@@ -82,8 +82,8 @@ def release(request):
         credits = request.POST.get('credits', '')
         genre = request.POST.get('genre')
 
-        if not all([title, release_date, cover_art, song, genre]):
-            return handle_error_message(request, "Please fill in all fields.")
+        # if not all([title, release_date, cover_art, song, genre]):
+        #     return handle_error_message(request, "Please fill in all fields.")
 
         artist = get_object_or_404(Artist, stage_name=stage_name)  # Find artist by stage name
 
