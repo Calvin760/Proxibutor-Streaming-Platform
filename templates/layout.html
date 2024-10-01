@@ -1,10 +1,11 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Description of my application.">
+    <meta name="keywords" content="music, streaming, artist, profile">  <!-- Added keywords -->
     {% load static %}
     <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
@@ -21,6 +22,17 @@
 
         .message {
             transition: opacity 0.5s ease;
+        }
+
+        /* Sticky footer styles */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
         }
     </style>
 </head>
@@ -69,10 +81,10 @@
                         </svg>
                         Profile
                     </button>
-                    <div id="account-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg">
-                        <ul class="py-1">
-                            <li><a href="/account" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Account</a></li>
-                            <li><a href="/logout" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Sign Out</a></li>
+                    <div id="account-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg" role="menu">
+                        <ul class="py-1" role="none">
+                            <li role="menuitem"><a href="/account" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Account</a></li>
+                            <li role="menuitem"><a href="/logout" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Sign Out</a></li>
                         </ul>
                     </div>
                 </li>

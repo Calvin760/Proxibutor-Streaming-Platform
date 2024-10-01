@@ -3,55 +3,57 @@
 {% block content %}
 <h2 class="text-xl font-semibold mb-4">Add New Release</h2>
 
-<form method="POST">
+<form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
 
     <div>
-        <label for="title" class="block text-sm font-medium text-white-800">Song Title</label>
+        <label for="title" class="block text-sm font-medium text-white">Song Title</label>
         <input type="text" id="title" name="title" required placeholder="Enter song title"
             class="mt-1 block w-full border border-gray-600 rounded-md p-2 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400">
     </div>
 
     <div>
-        <label for="stage_name" class="block text-sm font-medium text-white-800">Your Stage Name</label>
+        <label for="stage_name" class="block text-sm font-medium text-white">Your Stage Name</label>
         <input type="text" id="stage_name" name="stage_name" required placeholder="Enter your stage name"
             class="mt-1 block w-full border border-gray-600 rounded-md p-2 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400">
     </div>
 
     <div>
-        <label for="featured_artists" class="block text-sm font-medium text-white-800">Featured Artists</label>
+        <label for="featured_artists" class="block text-sm font-medium text-white">Featured Artists</label>
         <input type="text" id="featured_artists" name="featured_artists"
             class="mt-1 block w-full border border-gray-600 rounded-md p-2 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400"
             placeholder="Comma-separated names">
     </div>
 
     <div>
-        <label for="release_date" class="block text-sm font-medium text-white-800">Release Date</label>
+        <label for="release_date" class="block text-sm font-medium text-white">Release Date</label>
         <input type="date" id="release_date" name="release_date" required
             class="mt-1 block w-full border border-gray-600 rounded-md p-2 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400">
     </div>
 
     <div>
-        <label for="cover_art" class="block text-sm font-medium text-white-800">Cover Art</label>
+        <label for="cover_art" class="block text-sm font-medium text-white">Cover Art</label>
         <input type="file" id="cover_art" name="cover_art" accept="image/*" required
             class="mt-1 block w-full border border-gray-600 rounded-md p-2 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400">
+        <small class="text-gray-400">Max size: 5MB</small> <!-- Example for file size restriction -->
     </div>
 
     <div>
-        <label for="song" class="block text-sm font-medium text-white-800">Song File</label>
+        <label for="song" class="block text-sm font-medium text-white">Song File</label>
         <input type="file" id="song" name="song" accept="audio/*" required
             class="mt-1 block w-full border border-gray-600 rounded-md p-2 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400">
+        <small class="text-gray-400">Max size: 10MB</small> <!-- Example for file size restriction -->
     </div>
 
     <div>
-        <label for="credits" class="block text-sm font-medium white-gray-800">Credits</label>
+        <label for="credits" class="block text-sm font-medium text-white">Credits</label>
         <textarea id="credits" name="credits" rows="3"
             class="mt-1 block w-full border border-gray-600 rounded-md p-2 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400"
             placeholder="Production team, songwriters, etc."></textarea>
     </div>
 
     <div>
-        <label for="genre" class="block text-sm font-medium text-white-800">Genre</label>
+        <label for="genre" class="block text-sm font-medium text-white">Genre</label>
         <select id="genre" name="genre" required
             class="mt-1 block w-full border border-gray-600 rounded-md p-2 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400">
             <option value="">Select a genre</option>
@@ -81,7 +83,7 @@
     <div>
         <label for="explicit_lyrics" class="flex items-center">
             <input type="checkbox" id="explicit_lyrics" name="explicit_lyrics" value="true" class="mr-2">
-            <span class="text-sm text-white-700">Explicit Lyrics</span>
+            <span class="text-sm text-white">Explicit Lyrics</span>
         </label>
     </div>
 

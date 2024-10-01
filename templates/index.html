@@ -12,8 +12,14 @@
     <div class="flex flex-col gap-4 mt-2">
         {% for release in releases %}
         <div class="bg-gray-800 border border-gray-700 rounded-lg shadow-md p-3 flex items-center space-x-4">
+            {% if release.cover_art %}
             <img src="{{ release.cover_art.url }}" alt="Cover art for {{ release.title }}"
                 class="w-16 h-16 object-cover rounded-md">
+            {% else %}
+            <div class="w-16 h-16 bg-gray-700 rounded-md flex items-center justify-center">
+                <span class="text-gray-400">No Image</span>
+            </div>
+            {% endif %}
             <div class="flex-1">
                 <h4 class="text-md font-semibold text-white">{{ release.title }}</h4>
                 <p class="text-gray-400">By {{ release.stage_name }}</p>
@@ -23,7 +29,8 @@
                 <div class="mt-2">
                     <h5 class="font-semibold text-white">Available on:</h5>
                     <div class="flex space-x-2 mt-1">
-                        <img src="static/dsps.jpg" alt="Available on DSP" class="h-8 w-auto">
+                        <img src="static/dsps.jpg" alt="Available on Digital Streaming Platforms"
+                            class="h-8 w-auto">
                     </div>
                 </div>
             </div>
@@ -43,7 +50,7 @@
     </div>
 
     <div class="mt-4">
-        <a href="/createArtist"
+        <a href="createArtist"
             class="inline-block bg-green-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-green-600 transition">
             Create New Artist
         </a>
